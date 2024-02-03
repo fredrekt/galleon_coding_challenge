@@ -1,26 +1,44 @@
 'use client';
 import React, { useState } from 'react';
 import './DogCard.scss';
-import { Card, CardActionArea, CardActions, CardMedia, IconButton } from '@mui/material';
+import { Card, CardActionArea, CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, allFavorites, removeFavorite, selectFavorites } from '@dir/utils/breedSlice';
 
 interface DogCardProps {
 	imageUrl: string;
+	currentBreed: string;
+	title?: string;
 }
 
-const DogCard: React.FC<DogCardProps> = ({ imageUrl }) => {
-	const [like, setLike] = useState<boolean>(false);
+const DogCard: React.FC<DogCardProps> = ({ imageUrl, currentBreed, title }) => {
+	const dispatch = useDispatch();
+	const favorites = useSelector(selectFavorites);
+	const [like, setLike] = useState<boolean>(favorites.some((favorite: any) => favorite.breed === currentBreed));
 
 	const triggerLike = () => {
 		setLike(!like);
 		// update local storage
+		if (like) {
+			console.log('dislike');
+			dispatch(removeFavorite({ breed: currentBreed, imageUrl }));
+		} else {
+			console.log('like');
+			dispatch(addFavorite({ breed: currentBreed, images: [imageUrl] }));
+		}
 	};
 
 	return (
 		<Card className="dogCard">
 			<CardActionArea onClick={triggerLike}>
 				<CardMedia component="img" alt={'dog'} height={300} width={300} image={imageUrl} />
-				<CardActions onClick={triggerLike}>
+				{title && (
+					<CardContent>
+						<Typography component="p">{title}</Typography>
+					</CardContent>
+				)}
+				<CardActions>
 					<FavoriteIcon className={`saveFavorite ${like ? 'saved' : ''}`} />
 				</CardActions>
 			</CardActionArea>
