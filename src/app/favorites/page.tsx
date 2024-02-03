@@ -72,8 +72,10 @@ const Favoritespage = () => {
 						label="Filter by Breed"
 						onChange={(e) => setSelectedFilter(e.target.value)}
 					>
-						{favorites.map((data) => (
-							<MenuItem value={data.breed}>{data.breed}</MenuItem>
+						{favorites.map((data, id) => (
+							<MenuItem key={id} value={data.breed}>
+								{data.breed}
+							</MenuItem>
 						))}
 					</Select>
 				</FormControl>
