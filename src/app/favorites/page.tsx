@@ -1,21 +1,38 @@
 'use client';
 import { allFavorites } from '@dir/utils/breedSlice';
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import DogCard from '@dir/components/DogCard/DogCard';
-import { Container, Grid, Typography } from '@mui/material';
+import { Container, FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 
 const Favoritespage = () => {
 	const favorites = useSelector(allFavorites);
+	const [filterOptions, setFilterOptions] = useState(
+		favorites.map((data) => ({
+			label: data.breed
+		}))
+	);
+	const [selectedFilter, setSelectedFilter] = useState<string>('');
 
 	const renderFavoriteImages = () => {
 		if (!Array.isArray(favorites) || !favorites.length) {
 			return <Typography component={'p'}>No favorites found.</Typography>;
 		}
+
+		let filteredFavorites = favorites;
+
+		if (selectedFilter) {
+			filteredFavorites = favorites.filter((favorite) => favorite.breed === selectedFilter);
+
+			if (!filteredFavorites.length) {
+				return <Typography component={'p'}>No favorites found for breed: {selectedFilter}.</Typography>;
+			}
+		}
+
 		return (
-			<Grid container margin={{ md: 5 }} spacing={2} marginTop={{ xs: 2, sm: 2 }} marginBottom={{ xs: 2, sm: 2 }}>
+			<Grid container spacing={2}>
 				<Grid width={`100%`} item>
-					{favorites.map((favorite, id) => (
+					{filteredFavorites.map((favorite, id) => (
 						<Grid container spacing={2}>
 							<Grid item md={12}>
 								<h4 style={{ marginBottom: 0 }}>
@@ -39,7 +56,37 @@ const Favoritespage = () => {
 		);
 	};
 
-	return <Container>{renderFavoriteImages()}</Container>;
+	const renderFilters = () => {
+		if (!Array.isArray(favorites) || !favorites.length) {
+			return;
+		}
+
+		return (
+			<>
+				<FormControl fullWidth>
+					<InputLabel id="select-breed-filter">Filter by Breed</InputLabel>
+					<Select
+						labelId="select-breed-filter"
+						id="demo-simple-select"
+						value={selectedFilter}
+						label="Filter by Breed"
+						onChange={(e) => setSelectedFilter(e.target.value)}
+					>
+						{favorites.map((data) => (
+							<MenuItem value={data.breed}>{data.breed}</MenuItem>
+						))}
+					</Select>
+				</FormControl>
+			</>
+		);
+	};
+
+	return (
+		<Container>
+			{renderFilters()}
+			{renderFavoriteImages()}
+		</Container>
+	);
 };
 
 export default Favoritespage;
