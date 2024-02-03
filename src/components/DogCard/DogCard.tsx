@@ -1,10 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import './DogCard.scss';
-import { Card, CardActionArea, CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
+import { Card, CardActionArea, CardActions, CardMedia } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, allFavorites, removeFavorite, selectFavorites } from '@dir/utils/breedSlice';
+import { addFavorite, removeFavorite, selectFavorites } from '@dir/utils/breedSlice';
 
 interface DogCardProps {
 	imageUrl: string;
