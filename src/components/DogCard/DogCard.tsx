@@ -38,7 +38,7 @@ const DogCard: React.FC<DogCardProps> = ({ imageUrl, currentBreed, title }) => {
 			<CardActionArea onClick={triggerLike}>
 				<CardMedia component="img" alt={'dog'} height={300} width={300} image={imageUrl} />
 				<CardActions>
-					<FavoriteIcon className={`saveFavorite ${like ? 'saved' : ''}`} />
+					<FavoriteIcon className={`saveFavorite ${like || title ? 'saved' : ''}`} />
 				</CardActions>
 			</CardActionArea>
 		</Card>
