@@ -33,6 +33,7 @@ const BreederSelect: React.FC = () => {
 		if (!Array.isArray(listOfBreeds) || !listOfBreeds.length) {
 			return <CircularProgress />;
 		}
+
 		const options = listOfBreeds.map((data) => ({
 			label: data
 		}));
@@ -42,7 +43,7 @@ const BreederSelect: React.FC = () => {
 					disablePortal
 					id="combo-box-demo"
 					options={options}
-					sx={{ width: 300 }}
+					sx={{ width: `100%` }}
 					onChange={(e, value) => onChange(value?.label)}
 					renderInput={(params) => <TextField {...params} label="Select Breed" />}
 				/>
