@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import logoImg from '../../app/logo.png';
+import logoImg from '@dir/app/logo.png';
 
 const pages = ['Favorites', 'About', 'Contact Us'];
 
