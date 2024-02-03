@@ -12,6 +12,15 @@ const montserrat = Montserrat({
 const theme = createTheme({
 	typography: {
 		fontFamily: montserrat.style.fontFamily
+	},
+	components: {
+		MuiAutocomplete: {
+			styleOverrides: {
+				inputRoot: {
+					borderRadius: 0
+				}
+			}
+		}
 	}
 });
 
