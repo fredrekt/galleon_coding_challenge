@@ -11,8 +11,8 @@ const BreedSlugpage = async ({ params }: { params: { breedName: string } }) => {
 		}
 		return (
 			<>
-				{message.map((imgUrl) => (
-					<DogCard imageUrl={imgUrl} />
+				{message.map((imgUrl, id) => (
+					<DogCard key={id} imageUrl={imgUrl} />
 				))}
 			</>
 		);
