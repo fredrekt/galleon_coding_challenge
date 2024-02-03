@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import './DogCard.scss';
+import Image from 'next/image';
 
 interface DogCardProps {
 	imageUrl: string;
@@ -9,7 +10,7 @@ interface DogCardProps {
 const DogCard: React.FC<DogCardProps> = ({ imageUrl }) => {
 	return (
 		<div className="dogCard">
-			<img src={imageUrl} alt="dog" />
+			<Image src={imageUrl} alt="dog" width={300} height={300} />
 		</div>
 	);
 };
