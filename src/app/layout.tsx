@@ -5,6 +5,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import './global.scss';
 import Footerbar from '@dir/components/Footerbar/Footerbar';
 import Favicon from '@dir/app/favicon.ico';
+import StoreProvider from './StoreProvider';
 
 export const metadata = {
 	title: 'Dogs.',
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: RootLayout) {
 				<AppRouterCacheProvider>
 					<ThemeProvider theme={theme}>
 						<Navbar />
-						{children}
+						<StoreProvider>{children}</StoreProvider>
 						<Footerbar />
 					</ThemeProvider>
 				</AppRouterCacheProvider>
