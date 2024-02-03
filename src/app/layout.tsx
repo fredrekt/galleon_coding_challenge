@@ -4,10 +4,12 @@ import { ThemeProvider } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import './global.scss';
 import Footerbar from '@dir/components/Footerbar/Footerbar';
+import Favicon from '@dir/app/favicon.ico';
 
 export const metadata = {
 	title: 'Dogs.',
-	description: 'All about dogs, coding challenge.'
+	description: 'All about dogs, coding challenge.',
+	icons: [{ rel: 'icon', url: Favicon.src }]
 };
 
 interface RootLayout {
