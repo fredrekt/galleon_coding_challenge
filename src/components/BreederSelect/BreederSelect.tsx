@@ -1,12 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import './BreederSelect.scss';
-import { Breed } from '@component/types/breed.types';
-import axios from 'axios';
-import { Api } from '@component/types/api.types';
+import { Api } from '@dir/types/api.types';
 import { Autocomplete, CircularProgress, TextField } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { getListOfBreeds } from '@component/api/api';
+import { getListOfBreeds } from '@dir/api/api';
 
 const BreederSelect: React.FC = () => {
 	const [listOfBreeds, setListOfBreeds] = useState<string[]>([]);
@@ -35,6 +33,7 @@ const BreederSelect: React.FC = () => {
 		if (!Array.isArray(listOfBreeds) || !listOfBreeds.length) {
 			return <CircularProgress />;
 		}
+
 		const options = listOfBreeds.map((data) => ({
 			label: data
 		}));
@@ -44,7 +43,7 @@ const BreederSelect: React.FC = () => {
 					disablePortal
 					id="combo-box-demo"
 					options={options}
-					sx={{ width: 300 }}
+					sx={{ width: `100%` }}
 					onChange={(e, value) => onChange(value?.label)}
 					renderInput={(params) => <TextField {...params} label="Select Breed" />}
 				/>

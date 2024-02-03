@@ -14,6 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import logoImg from '@dir/app/logo.png';
 
 const pages = ['Favorites', 'About', 'Contact Us'];
 
@@ -50,25 +52,23 @@ const Navbar: React.FC = () => {
 
 	return (
 		<div className="navbar">
-			<AppBar position="static">
+			<AppBar color="inherit" position="static">
 				<Container maxWidth="xl">
 					<Toolbar disableGutters>
 						<Link className="navbarLogo" href="/">
-							<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+							<Image src={logoImg} width={35} height={35} alt="logo" />
 							<Typography
-								variant="h6"
+								variant="h5"
 								noWrap
 								sx={{
 									mr: 2,
 									display: { xs: 'none', md: 'flex' },
-									fontFamily: 'monospace',
 									fontWeight: 700,
-									letterSpacing: '.3rem',
 									color: 'inherit',
 									textDecoration: 'none'
 								}}
 							>
-								LOGO
+								Dogs.
 							</Typography>
 						</Link>
 
@@ -100,9 +100,10 @@ const Navbar: React.FC = () => {
 								sx={{
 									display: { xs: 'block', md: 'none' }
 								}}
+								color="inherit"
 							>
 								{pages.map((page) => (
-									<MenuItem key={page} onClick={() => handleCloseNavMenu()}>
+									<MenuItem color="inherit" key={page} onClick={() => handleCloseNavMenu()}>
 										<Typography textAlign="center">{page}</Typography>
 									</MenuItem>
 								))}
@@ -128,13 +129,24 @@ const Navbar: React.FC = () => {
 							LOGO
 						</Typography>
 						<Box
-							sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: { md: 'center' } }}
+							sx={{
+								flexGrow: 1,
+								display: { xs: 'none', md: 'flex' },
+								justifyContent: { md: 'center' },
+								gap: 7
+							}}
 						>
 							{pages.map((page) => (
 								<Button
+									color="inherit"
 									key={page}
 									onClick={() => handleCloseNavMenu(page)}
-									sx={{ my: 2, color: 'white', display: 'block' }}
+									sx={{
+										my: 2,
+										display: 'block',
+										textTransform: 'capitalize',
+										letterSpacing: `0.05em`
+									}}
 								>
 									{page}
 								</Button>

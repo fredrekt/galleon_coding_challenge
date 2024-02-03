@@ -1,4 +1,4 @@
-import { Api } from '@component/types/api.types';
+import { Api } from '@dir/types/api.types';
 import axios from 'axios';
 import './config';
 
