@@ -82,7 +82,7 @@ const Favoritespage = () => {
 	};
 
 	return (
-		<Container>
+		<Container style={{ marginTop: `35px`, marginBottom: `35px` }}>
 			{renderFilters()}
 			{renderFavoriteImages()}
 		</Container>
