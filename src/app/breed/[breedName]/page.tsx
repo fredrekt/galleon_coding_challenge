@@ -14,7 +14,7 @@ const BreedSlugpage = async ({ params }: { params: { breedName: string } }) => {
 			<Grid container margin={{ md: 5 }} spacing={2} marginTop={{ xs: 2, sm: 2 }} marginBottom={{ xs: 2, sm: 2 }}>
 				{message.map((imgUrl, id) => (
 					<Grid width={`100%`} key={id} item md={3}>
-						<DogCard key={id} imageUrl={imgUrl} />
+						<DogCard currentBreed={params.breedName} key={id} imageUrl={imgUrl} />
 					</Grid>
 				))}
 			</Grid>
