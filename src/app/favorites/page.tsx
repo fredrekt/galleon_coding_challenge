@@ -7,11 +7,6 @@ import { Container, FormControl, Grid, InputLabel, MenuItem, Select, Typography 
 
 const Favoritespage = () => {
 	const favorites = useSelector(allFavorites);
-	const [filterOptions, setFilterOptions] = useState(
-		favorites.map((data) => ({
-			label: data.breed
-		}))
-	);
 	const [selectedFilter, setSelectedFilter] = useState<string>('');
 
 	const renderFavoriteImages = () => {
