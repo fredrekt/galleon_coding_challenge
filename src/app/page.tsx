@@ -1,4 +1,4 @@
-import BreederSelect from '@component/components/BreederSelect/BreederSelect';
+import BreederSelect from '@dir/components/BreederSelect/BreederSelect';
 import React from 'react';
 
 const Homepage: React.FC = () => {

@@ -1,9 +1,9 @@
-import Navbar from '@component/components/Navbar/Navbar';
-import theme from '@component/utils/theme';
+import Navbar from '@dir/components/Navbar/Navbar';
+import theme from '@dir/utils/theme';
 import { ThemeProvider } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import './global.scss';
-import Footerbar from '@component/components/Footerbar/Footerbar';
+import Footerbar from '@dir/components/Footerbar/Footerbar';
 
 export const metadata = {
 	title: 'Dogs.',

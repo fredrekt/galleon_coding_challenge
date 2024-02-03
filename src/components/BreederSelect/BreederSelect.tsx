@@ -1,12 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import './BreederSelect.scss';
-import { Breed } from '@component/types/breed.types';
-import axios from 'axios';
-import { Api } from '@component/types/api.types';
+import { Api } from '@dir/types/api.types';
 import { Autocomplete, CircularProgress, TextField } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { getListOfBreeds } from '@component/api/api';
+import { getListOfBreeds } from '@dir/api/api';
 
 const BreederSelect: React.FC = () => {
 	const [listOfBreeds, setListOfBreeds] = useState<string[]>([]);

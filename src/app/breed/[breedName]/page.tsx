@@ -1,5 +1,5 @@
-import { getByBreed } from '@component/api/api';
-import DogCard from '@component/components/DogCard/DogCard';
+import { getByBreed } from '@dir/api/api';
+import DogCard from '@dir/components/DogCard/DogCard';
 import React from 'react';
 
 const BreedSlugpage = async ({ params }: { params: { breedName: string } }) => {
