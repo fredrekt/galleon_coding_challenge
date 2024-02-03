@@ -23,7 +23,7 @@ const DogCard: React.FC<DogCardProps> = ({ imageUrl, currentBreed, title }) => {
 			return;
 		}
 		setLike(!like);
-		// update local storage
+		// update local storage & dispatch (redux)
 		if (like) {
 			console.log('dislike');
 			dispatch(removeFavorite({ breed: currentBreed, imageUrl }));
