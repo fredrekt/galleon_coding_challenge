@@ -1,17 +1,30 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import './DogCard.scss';
-import Image from 'next/image';
+import { Card, CardActionArea, CardActions, CardMedia, IconButton } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 interface DogCardProps {
 	imageUrl: string;
 }
 
 const DogCard: React.FC<DogCardProps> = ({ imageUrl }) => {
+	const [like, setLike] = useState<boolean>(false);
+
+	const triggerLike = () => {
+		setLike(!like);
+		// update local storage
+	};
+
 	return (
-		<div className="dogCard">
-			<Image src={imageUrl} alt="dog" width={300} height={300} />
-		</div>
+		<Card className="dogCard">
+			<CardActionArea onClick={triggerLike}>
+				<CardMedia component="img" alt={'dog'} height={300} width={300} image={imageUrl} />
+				<CardActions onClick={triggerLike}>
+					<FavoriteIcon className={`saveFavorite ${like ? 'saved' : ''}`} />
+				</CardActions>
+			</CardActionArea>
+		</Card>
 	);
 };
 
