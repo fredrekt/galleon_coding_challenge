@@ -53,11 +53,14 @@ const breedSlice = createSlice({
 					localStorage.setItem('breedState', JSON.stringify(state));
 				}
 			}
+		},
+		setState: (state, action: PayloadAction<BreedState>) => {
+			return action.payload;
 		}
 	}
 });
 
-export const { addFavorite, removeFavorite } = breedSlice.actions;
+export const { addFavorite, removeFavorite, setState } = breedSlice.actions;
 
 export const allFavorites = (state: RootState) => state.breed.favorites;
 
