@@ -1,5 +1,5 @@
 import React from 'react';
-import './Dog.scss';
+import './DogCard.scss';
 
 interface DogCardProps {
 	imageUrl: string;
