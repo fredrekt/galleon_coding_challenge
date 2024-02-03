@@ -33,14 +33,14 @@ const Favoritespage = () => {
 			<Grid container spacing={2}>
 				<Grid width={`100%`} item>
 					{filteredFavorites.map((favorite, id) => (
-						<Grid container spacing={2}>
+						<Grid key={id} container spacing={2}>
 							<Grid item md={12}>
 								<h4 style={{ marginBottom: 0 }}>
 									{favorite.breed.charAt(0).toUpperCase() + favorite.breed.slice(1)}
 								</h4>
 							</Grid>
 							{favorite.images.map((imageUrl, index) => (
-								<Grid width={`100%`} key={id} item md={3}>
+								<Grid width={`100%`} key={index} item md={3}>
 									<DogCard
 										title={favorite.breed}
 										currentBreed={favorite.breed}
