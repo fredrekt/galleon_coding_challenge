@@ -18,6 +18,10 @@ const DogCard: React.FC<DogCardProps> = ({ imageUrl, currentBreed, title }) => {
 	const [like, setLike] = useState<boolean>(favorites.some((favorite: any) => favorite.breed === currentBreed));
 
 	const triggerLike = () => {
+		if (title) {
+			dispatch(removeFavorite({ breed: currentBreed, imageUrl }));
+			return;
+		}
 		setLike(!like);
 		// update local storage
 		if (like) {
@@ -33,11 +37,6 @@ const DogCard: React.FC<DogCardProps> = ({ imageUrl, currentBreed, title }) => {
 		<Card className="dogCard">
 			<CardActionArea onClick={triggerLike}>
 				<CardMedia component="img" alt={'dog'} height={300} width={300} image={imageUrl} />
-				{title && (
-					<CardContent>
-						<Typography component="p">{title}</Typography>
-					</CardContent>
-				)}
 				<CardActions>
 					<FavoriteIcon className={`saveFavorite ${like ? 'saved' : ''}`} />
 				</CardActions>
