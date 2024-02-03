@@ -27,6 +27,13 @@ const theme = createTheme({
 					borderRadius: 0
 				}
 			}
+		},
+		MuiSelect: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0
+				}
+			}
 		}
 	}
 });
